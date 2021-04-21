@@ -1,0 +1,14 @@
+{
+  "name": "slidejavascript",
+  "version": "1.0.0",
+  "description": "prueba de slide 1",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Larry Caycho <larry.kevin.c.c@gmail.com>",
+  "license": "MIT"
+}
