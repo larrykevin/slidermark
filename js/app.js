@@ -22,7 +22,7 @@ const startSlide = () => {
    slideId = setInterval( () => {
       index++;
       slide.style.transform = `translateX(${-slideWidth * index}px)`;
-      slide.style.transition = '.7s';
+      slide.style.transition = '.8s ease-in-out';
    }, interval);
 }
 
