@@ -14,13 +14,19 @@ h1 {
    letter-spacing: -0.02em;
    text-align: center;
 }
+.container {
+   position: relative;
+   margin: 0 auto;
+   max-width: 1024px;
+   height: 300px;
+}
 .slider {
    width: 1024px;
-   margin: 0 auto;
    display: flex;
 }
 .slider__container {
    display: grid;
+   min-width: 1024px;
    grid-template-columns: repeat(4, 1fr);
    grid-template-rows: repeat(2, 120px);
    row-gap: 36px;

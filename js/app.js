@@ -1,17 +1,41 @@
-const globalContainer = document.getElementById('slider');
-const firstContainer = document.getElementById('first');
-const secondContainer = document.getElementById('second');
-const thirdContainer = document.getElementById('third');
+const slideContainer = document.querySelector('.container');
+const slide = document.querySelector('.slider');
 
-console.log(globalContainer);
+let slides = document.querySelectorAll('.slider__container');
 
-function changeContainer() {
-   setTimeout( modifyContainer => addClass(firstContainer) , 3000 );
-   setTimeout( modifyContainer => removeClass(secondContainer) , 3001 );
-   setTimeout( modifyContainer => addClass(secondContainer) , 6000 );
-   setTimeout( modifyContainer => removeClass(thirdContainer) , 6001 );
-   return console.log('ya cargó el dom perrín');
+const interval = 3500;
+let index = 1;
+let slideId;
+
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+
+firstClone.id = 'first-clone';
+lastClone.id = 'last-clone';
+
+slide.append(firstClone);
+slide.prepend(lastClone);
+
+const slideWidth = slides[index].clientWidth;
+
+const startSlide = () => {
+   slideId = setInterval( () => {
+      index++;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+      slide.style.transition = '.7s';
+   }, interval);
 }
 
-let addClass = containerOn => containerOn.classList.add("off");
-let removeClass = containerOff => containerOff.classList.remove("off");
+slide.addEventListener('transitionend', () => {
+   slides = document.querySelectorAll('.slider__container');
+   if(slides[index].id === firstClone.id) {
+      slide.style.transition = 'none';
+      index = 1;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+   }
+});
+
+slideContainer.addEventListener('mouseenter', () => { clearInterval(slideId) })
+slideContainer.addEventListener('mouseleave', startSlide);
+
+startSlide();
